@@ -31,6 +31,9 @@ namespace CetBookStore.Models
         public  Category Category { get; set; }
         public DateTime CreatedDate { get; set; }
         public virtual List<Comment> Comments { get; set; }
+
+
+
         public Book()
         {
             CreatedDate = DateTime.Now;
