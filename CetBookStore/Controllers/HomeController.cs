@@ -68,6 +68,17 @@ namespace CetBookStore.Controllers
                 books = books.Where(b => b.CategoryId == searchModel.CategoryId.Value);
             }
 
+
+            if (searchModel.MinimumPrice.HasValue)
+            {
+                books = books.Where(b => b.Price >= searchModel.MinimumPrice.Value);
+            }
+
+            if (searchModel.MaximumPrice.HasValue)
+            {
+                books = books.Where(b => b.Price <= searchModel.MaximumPrice.Value);
+            }
+
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name",searchModel.CategoryId);
             searchModel.Results= await books.ToListAsync();
             return View(searchModel);
