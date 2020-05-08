@@ -1,42 +1,37 @@
 ﻿@model CetBookStore.ViewModel.SearchViewModel
 
-    <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
 
-        <div class="header_search">
-            <div class="header_search_content">
-                <div class="header_search_form_container">
-                    <div class="header_search_form">
-                        <form asp-controller="Home" asp-action="Search" class="header_search_form clearfix">
+<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+    <div class="header_search">
+        <div class="header_search_content">
+            <div class="header_search_form_container">
+                <form asp-controller="Home" asp-action="Search" class="header_search_form clearfix">
+                    <input type="search" placeholder="Ara" required="required" class="header_search_input" asp-for="SearchText">
+                    <div class="custom_dropdown">
+                        <div class="custom_dropdown_list">
+                            <span class="custom_dropdown_placeholder clc">Tum Kategoriler</span>
+                            <i class="fas fa-chevron-down"></i>
+                            <ul class="custom_list clc">
+                                <li><a class="clc" onclick="SetCategoryId('')">Tüm Kategoriler</a></li>
+                                <li><a class="clc" onclick="SetCategoryId('1')">1. Kategori</a></li>
+                                <li><a class="clc" onclick="SetCategoryId('2')">2. Kategori</a></li>
+                                <li><a class="clc" onclick="SetCategoryId('3')">3. Kategori</a></li>
 
-                            <input type="search" placeholder="Ara" required="required" class="header_search_input" asp-for="SearchText">
-
-                            <div class="custom_dropdown">
-                                <div class="custom_dropdown_list">
-                                    <span class="custom_dropdown_placeholder clc">Tum Kategoriler</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                    <ul class="custom_list clc">
-                                        
-
-                                        <li>
-                                            <select asp-for="CategoryId" asp-items="ViewBag.CategoryId">
-                                                <option value=""> Tüm Kategoriler </option>
-                                                <option asp-for="CategoryId" asp-items="ViewBag.CategoryId"> </option>
-                                            </select>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <button class="header_search_button trans_300" type="submit" value="Submit"><img alt="" src="~/images/search.png"></button>
-
-                        </form>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                    <input type="hidden" asp-for="CategoryId" />
+                    <button class="header_search_button trans_300" type="submit" value="Submit"><img alt="" src="~/images/search.png"></button>
+
+                </form>
             </div>
         </div>
     </div>
-
-
+</div>
+<script type="text/javascript">
+    function SetCategoryId(id) {
+        document.getElementById("CategoryId").value = id;
+    }
+</script>
 
 
